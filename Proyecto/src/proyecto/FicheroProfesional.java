@@ -65,7 +65,7 @@ public class FicheroProfesional extends JPanel{
                 completo.setVisible(true);
                 completo.setSize(400, 400);
                 completo.setDefaultCloseOperation(EXIT_ON_CLOSE);
-                this.setVisible(false); // debe de haber una forma de cerrar el display de todos
+                //this.setVisible(false); // debe de haber una forma de cerrar el display de todos
             }
         });
         
