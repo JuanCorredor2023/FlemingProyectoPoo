@@ -1,91 +1,87 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Vista;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
-/**
- *
- * @author JB
- */
-public class Preambulo extends JFrame{
-    
-    private JPanel panel_principal;
-    private JPanel panel_header;
-    private JPanel panel_body;
+public class Preambulo extends JFrame {
+    private JMenuBar menuBar;
+    private JMenu menuOptions;
+    private JMenuItem menuItemUser;
+    private JMenuItem menuItemDoctor;
+    private JMenuItem menuItemAdmin;
 
-    private JLabel lb_titulo;
-    private JLabel lb_subtitulo;
-    private JLabel ic_logo;
-    
-    private JButton bt_user;
-    private JButton bt_doctor;
-    private JButton bt_admin;
+    private JPanel panelPrincipal;
+    private JLabel lbTitulo;
+    private JLabel lbSubtitulo;
 
     public Preambulo() {
-        
-        panel_principal = new JPanel();
-        panel_header = new JPanel();
-        panel_body = new JPanel();
-        
-        lb_titulo = new JLabel("F L E M I N G");
-        lb_subtitulo = new JLabel("Conectándote con los mejores profesionales");
-        
-        bt_user = new JButton("Usuario");
-        bt_doctor = new JButton("Doctor");
-        bt_admin = new JButton("Administrador");
-        
-        bt_user.addActionListener(new ActionListener(){
+        setTitle("Fleming");
+        setSize(400, 300);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+
+        menuBar = new JMenuBar();
+        menuOptions = new JMenu("Opciones");
+
+        menuItemUser = new JMenuItem("Usuario");
+        menuItemDoctor = new JMenuItem("Doctor");
+        menuItemAdmin = new JMenuItem("Administrador");
+
+        menuItemUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Login_User login_user = new Login_User();
-                login_user.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                login_user.setDefaultCloseOperation(EXIT_ON_CLOSE);
-                login_user.setVisible(true);
+                Login_User loginUser = new Login_User();
+                loginUser.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                loginUser.setDefaultCloseOperation(EXIT_ON_CLOSE);
+                loginUser.setVisible(true);
                 setVisible(false);
             }
         });
-        
-        bt_doctor.addActionListener(new ActionListener(){
+
+        menuItemDoctor.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Login_Doctor login_doc = new Login_Doctor();
-                login_doc.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                login_doc.setDefaultCloseOperation(EXIT_ON_CLOSE);
-                login_doc.setVisible(true);
+                Login_Doctor loginDoc = new Login_Doctor();
+                loginDoc.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                loginDoc.setDefaultCloseOperation(EXIT_ON_CLOSE);
+                loginDoc.setVisible(true);
                 setVisible(false);
             }
         });
-        
-        bt_admin.addActionListener(new ActionListener(){
+
+        menuItemAdmin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Login_Admin login_admin = new Login_Admin();
-                login_admin.setExtendedState(JFrame.MAXIMIZED_BOTH);;
-                login_admin.setDefaultCloseOperation(EXIT_ON_CLOSE);
-                login_admin.setVisible(true);
+                Login_Admin loginAdmin = new Login_Admin();
+                loginAdmin.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                loginAdmin.setDefaultCloseOperation(EXIT_ON_CLOSE);
+                loginAdmin.setVisible(true);
                 setVisible(false);
             }
         });
-        
-        lb_titulo.setBounds(155, 40, 100, 25);
-        bt_user.setBounds(30, 80, 150, 25);
-        bt_doctor.setBounds(200, 80, 150, 25);
-        bt_admin.setBounds(110, 130, 150, 25);
-        
-        panel_principal.add(lb_titulo);
-        panel_principal.add(bt_user);
-        panel_principal.add(bt_doctor);
-        panel_principal.add(bt_admin);
-        
-        
-        setContentPane(panel_principal);
-        panel_principal.setLayout(null);
-        
+
+        menuOptions.add(menuItemUser);
+        menuOptions.add(menuItemDoctor);
+        menuOptions.add(menuItemAdmin);
+
+        menuBar.add(menuOptions);
+
+        setJMenuBar(menuBar);
+
+        panelPrincipal = new JPanel();
+        lbTitulo = new JLabel("F L E M I N G");
+        lbSubtitulo = new JLabel("Conectándote con los mejores profesionales");
+
+        panelPrincipal.setLayout(new BoxLayout(panelPrincipal, BoxLayout.Y_AXIS));
+        lbTitulo.setAlignmentX(CENTER_ALIGNMENT);
+        lbSubtitulo.setAlignmentX(CENTER_ALIGNMENT);
+
+        panelPrincipal.add(Box.createVerticalStrut(50));
+        panelPrincipal.add(lbTitulo);
+        panelPrincipal.add(Box.createVerticalStrut(20));
+        panelPrincipal.add(lbSubtitulo);
+
+        add(panelPrincipal);
     }
 }
