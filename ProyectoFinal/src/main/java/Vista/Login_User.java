@@ -4,6 +4,7 @@
  */
 package Vista;
 
+import DP_User.displayPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -11,7 +12,8 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 import conexionMongoDB.*;
 import clasesCredenciales.*;
 import com.mongodb.MongoException;
-
+import bitacoraLocal.*;
+        
 /**
  *
  * @author JB
@@ -34,6 +36,8 @@ public class Login_User extends JFrame{
         
         fun = new Funciones();
         
+        funcionesBitacora fb = new funcionesBitacora();
+        
         panel_principal = new JPanel();
         lb_titulo = new JLabel("F L E M I N G");
         txt_login = new JLabel("USER LOGIN");
@@ -51,12 +55,21 @@ public class Login_User extends JFrame{
                 String user = txt_usuario.getText();
                 String pass = txt_pass.getText();
                 
+                fb.guardarString(user, pass);
+                
                 if(revCredenciales(user, pass)){
-                    Display_User display_user = new Display_User();
+                    
+                    JFrame display_user = new JFrame();
+                    //Display_User display_user = new Display_User();
                     display_user.setExtendedState(JFrame.MAXIMIZED_BOTH);
                     display_user.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+                    displayPanel panel = new displayPanel();
+                    display_user.add(panel);
+                    
                     display_user.setVisible(true);
                     setVisible(false);
+                    
                     fun.Close();
                 }else{
                     JOptionPane.showMessageDialog(null, "El usuario o la contraseña con incorrectos");

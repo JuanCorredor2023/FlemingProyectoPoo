@@ -12,6 +12,7 @@ import clasesCredenciales.*;
 import com.mongodb.MongoException;
 import conexionMongoDB.*;
 import java.util.List;
+import DP_Admin.*;
 
 /**
  *
@@ -52,7 +53,13 @@ public class Login_Admin extends JFrame{
                 String pass = txt_pass.getText();
 
                 if(revCredenciales(codigo, pass)){
-                    Display_Admin display_admin = new Display_Admin();
+                    
+                    displayPanelA dpa = new displayPanelA();
+                    
+                    JFrame display_admin = new JFrame();
+                    
+                    display_admin.add(dpa);
+                    
                     display_admin.setExtendedState(JFrame.MAXIMIZED_BOTH);
                     display_admin.setDefaultCloseOperation(EXIT_ON_CLOSE);
                     display_admin.setVisible(true);

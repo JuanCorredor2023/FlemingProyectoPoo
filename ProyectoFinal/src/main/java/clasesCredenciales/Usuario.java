@@ -4,6 +4,8 @@
  */
 package clasesCredenciales;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author JB
@@ -16,15 +18,17 @@ public class Usuario {
     private String correo;
     private int edad;
     private String city;
+    private ArrayList<Fecha> fecha_cita;
 
-    public Usuario(String usuario, String pass, String name, String correo, int edad, String city) {
+    public Usuario(String usuario, String pass, String name, String correo, int edad, String city, ArrayList<Fecha> fecha_cita) {
         this.usuario = usuario;
         this.pass = pass;
         this.name = name;
         this.correo = correo;
         this.edad = edad;
         this.city = city;
-    }  
+        this.fecha_cita = fecha_cita;
+    }
 
     public String getUsuario() {
         return usuario;
@@ -73,7 +77,13 @@ public class Usuario {
     public void setCity(String city) {
         this.city = city;
     }
-    
-      
-    
+
+    public ArrayList<Fecha> getFecha_cita() {
+        return fecha_cita;
+    }
+
+    public void setFecha_cita(ArrayList<Fecha> fecha_cita) {
+        this.fecha_cita = fecha_cita;
+    }
+
 }
